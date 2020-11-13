@@ -106,24 +106,27 @@ public class TennisGame2 implements TennisGame
         String score;
     }
     
-    private static Output pureGetScoreLovePlayer2(int p1p, String P1resp, String P2resp) {
-        String P1res = nameForPlayer1(P1resp, p1p);
-        String P2res = loveForPlayer2(P2resp);
-        String score;
-        score = scoreFor(P1res, P2res);
-
-        Output r = new Output();
-        r.r1 = P1res; 
-        r.r2 = P2res; 
-        r.score = score;
-        return r;
+    // win: we have 3 pure functions which we can move around and change as we like.
+    
+    private static Output pureGetScoreLovePlayer2(int pointsPlayer1, 
+                String defaultScorePlayer1, String defaultScorePlayer2) {
+        String scoreNamePlayer1 = scorePlayer1(defaultScorePlayer1, pointsPlayer1);
+        String scoreNamePlayer2 = lovePlayer2(defaultScorePlayer2);
+        String score = namedScoreBothPlayers(scoreNamePlayer1, scoreNamePlayer2);
+        
+        Output result = new Output();
+        result.r1 = scoreNamePlayer1; 
+        result.r2 = scoreNamePlayer2; 
+        result.score = score;
+        
+        return result;
     }
 
-    private static String scoreFor(String p1, String p2) {
+    private static String namedScoreBothPlayers(String p1, String p2) {
         return p1 + "-" + p2;
     }
 
-    private static String nameForPlayer1(String oldP1Res, int p1p) {
+    private static String scorePlayer1(String oldP1Res, int p1p) {
         String newP1Res = oldP1Res;
         if (p1p==1)
             newP1Res = "Fifteen";
@@ -134,7 +137,7 @@ public class TennisGame2 implements TennisGame
         return newP1Res;
     }
 
-    private static String loveForPlayer2(String oldP2Res) {
+    private static String lovePlayer2(String oldP2Res) {
         return "Love";
     }
     
