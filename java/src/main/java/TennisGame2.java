@@ -31,7 +31,7 @@ public class TennisGame2 implements TennisGame
         
         if (P1point > 0 && P2point==0)
         {
-            score = foo();
+            score = getScoreLovePlayer2();
         }
         if (P2point > 0 && P1point==0)
         {
@@ -92,12 +92,11 @@ public class TennisGame2 implements TennisGame
         return score;
     }
 
-    private String foo() {
-        String score = pureFoo(P1point);
-        return score;
+    private String getScoreLovePlayer2() {
+        return pureGetScoreLovePlayer2(P1point);
     }
 
-    private String pureFoo(int p1p) {
+    private String pureGetScoreLovePlayer2(int p1p) {
         String score;
         if (p1p==1)
             P1res = "Fifteen";
@@ -106,9 +105,14 @@ public class TennisGame2 implements TennisGame
         if (p1p==3)
             P1res = "Forty";
         
-        P2res = "Love";
+        String newP2Res = loveFor(P2res);
+        P2res = newP2Res;
         score = P1res + "-" + P2res;
         return score;
+    }
+
+    private static String loveFor(String oldP2Res) {
+        return "Love";
     }
     
     public void SetP1Score(int number){
