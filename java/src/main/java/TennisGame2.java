@@ -96,14 +96,25 @@ public class TennisGame2 implements TennisGame
         return pureGetScoreLovePlayer2(P1point);
     }
 
-    private String pureGetScoreLovePlayer2(int p1p) {
+    class Result {
+        String r1;
+        String r2;
         String score;
+    }
+    
+    private String pureGetScoreLovePlayer2(int p1p) {
         
         P1res = nameForPlayer1(P1res, p1p);
         P2res = loveForPlayer2(P2res);
+        String score;
         score = scoreFor(P1res, P2res);
-        
-        return score;
+
+        Result r = new Result();
+        r.r1 = P1res; 
+        r.r2 = P2res; 
+        r.score = score; 
+
+        return r.score;
     }
 
     private static String scoreFor(String p1, String p2) {
