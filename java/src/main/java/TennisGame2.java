@@ -107,6 +107,7 @@ public class TennisGame2 implements TennisGame
     }
     
     // win: we have 3 pure functions which we can move around and change as we like.
+    // now we write tests for it. Some code will be reused.
     
     private static Output pureGetScoreLovePlayer2(int pointsPlayer1, 
                 String defaultScorePlayer1, String defaultScorePlayer2) {
