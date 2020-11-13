@@ -4,7 +4,7 @@ public class TennisGame2 implements TennisGame
     public int P1point = 0;
     public int P2point = 0;
     
-    public String P1res = "";
+    public String P1res = ""; // mutated
     public String P2res = "";
     private String player1Name;
     private String player2Name;
@@ -31,15 +31,7 @@ public class TennisGame2 implements TennisGame
         
         if (P1point > 0 && P2point==0)
         {
-            if (P1point==1)
-                P1res = "Fifteen";
-            if (P1point==2)
-                P1res = "Thirty";
-            if (P1point==3)
-                P1res = "Forty";
-            
-            P2res = "Love";
-            score = P1res + "-" + P2res;
+            score = foo();
         }
         if (P2point > 0 && P1point==0)
         {
@@ -97,6 +89,25 @@ public class TennisGame2 implements TennisGame
         {
             score = "Win for player2";
         }
+        return score;
+    }
+
+    private String foo() {
+        String score = pureFoo(P1point);
+        return score;
+    }
+
+    private String pureFoo(int p1p) {
+        String score;
+        if (p1p==1)
+            P1res = "Fifteen";
+        if (p1p==2)
+            P1res = "Thirty";
+        if (p1p==3)
+            P1res = "Forty";
+        
+        P2res = "Love";
+        score = P1res + "-" + P2res;
         return score;
     }
     
