@@ -98,20 +98,26 @@ public class TennisGame2 implements TennisGame
 
     private String pureGetScoreLovePlayer2(int p1p) {
         String score;
-        if (p1p==1)
-            P1res = "Fifteen";
-        if (p1p==2)
-            P1res = "Thirty";
-        if (p1p==3)
-            P1res = "Forty";
         
-        String newP2Res = loveFor(P2res);
-        P2res = newP2Res;
+        P1res = nameForPlayer1(P1res, p1p);
+        P2res = loveForPlayer2(P2res);
+        
         score = P1res + "-" + P2res;
         return score;
     }
 
-    private static String loveFor(String oldP2Res) {
+    private static String nameForPlayer1(String oldP1Res, int p1p) {
+        String newP1Res = oldP1Res;
+        if (p1p==1)
+            newP1Res = "Fifteen";
+        if (p1p==2)
+            newP1Res = "Thirty";
+        if (p1p==3)
+            newP1Res = "Forty";
+        return newP1Res;
+    }
+
+    private static String loveForPlayer2(String oldP2Res) {
         return "Love";
     }
     
