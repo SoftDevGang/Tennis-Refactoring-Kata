@@ -1,4 +1,3 @@
-
 public class TennisGame2 implements TennisGame
 {
     public int P1point = 0;
@@ -93,28 +92,31 @@ public class TennisGame2 implements TennisGame
     }
 
     private String getScoreLovePlayer2() {
-        return pureGetScoreLovePlayer2(P1point);
+        Output r = pureGetScoreLovePlayer2(P1point, P1res, P2res); 
+        
+        P1res = r.r1; 
+        P2res = r.r2; 
+        
+        return r.score;
     }
 
-    class Result {
+    static class Output {
         String r1;
         String r2;
         String score;
     }
     
-    private String pureGetScoreLovePlayer2(int p1p) {
-        
-        P1res = nameForPlayer1(P1res, p1p);
-        P2res = loveForPlayer2(P2res);
+    private static Output pureGetScoreLovePlayer2(int p1p, String P1resp, String P2resp) {
+        String P1res = nameForPlayer1(P1resp, p1p);
+        String P2res = loveForPlayer2(P2resp);
         String score;
         score = scoreFor(P1res, P2res);
 
-        Result r = new Result();
+        Output r = new Output();
         r.r1 = P1res; 
         r.r2 = P2res; 
-        r.score = score; 
-
-        return r.score;
+        r.score = score;
+        return r;
     }
 
     private static String scoreFor(String p1, String p2) {
