@@ -101,9 +101,13 @@ public class TennisGame2 implements TennisGame
         
         P1res = nameForPlayer1(P1res, p1p);
         P2res = loveForPlayer2(P2res);
+        score = scoreFor(P1res, P2res);
         
-        score = P1res + "-" + P2res;
         return score;
+    }
+
+    private static String scoreFor(String p1, String p2) {
+        return p1 + "-" + p2;
     }
 
     private static String nameForPlayer1(String oldP1Res, int p1p) {
